@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-vestorly",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ESLint rules for Vestorly",
   "keywords": [
     "eslint",
