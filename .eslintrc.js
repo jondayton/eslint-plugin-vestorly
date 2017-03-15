@@ -3,7 +3,7 @@ module.exports = {
   env: {
     'node': true
   },
-  extends: [
-    './config/all.js'
-  ]
+  rules: {
+    'yuidoc-documentation': 2
+  }
 };

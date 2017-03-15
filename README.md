@@ -1,6 +1,6 @@
 # eslint-plugin-vestorly
 
-Vestorly&#39;s eslint rules
+ESLint rules for Vestorly
 
 ## Installation
 
@@ -44,3 +44,8 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 * Fill in provided rules here
+
+
+
+
+

@@ -1,4 +1,4 @@
-# Method or property does not have documentation (method-property-documentation)
+# Method or property does not have correct documentation (yuidoc-documentation)
 
 Please describe the origin of the rule here.
 
