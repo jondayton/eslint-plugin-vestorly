@@ -4,6 +4,7 @@ module.exports = {
     'node': true
   },
   rules: {
-    'yuidoc-documentation': 2
+    'method-property-documentation': 2,
+    'class-documentation': 2
   }
 };

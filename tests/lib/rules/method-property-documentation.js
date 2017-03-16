@@ -8,7 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/yuidoc-documentation"),
+var rule = require("../../../lib/rules/method-property-documentation"),
 
     RuleTester = require("eslint").RuleTester;
 
@@ -18,15 +18,30 @@ var rule = require("../../../lib/rules/yuidoc-documentation"),
 //------------------------------------------------------------------------------
 
 var ruleTester = new RuleTester();
-ruleTester.run("yuidoc-documentation", rule, {
+ruleTester.run("method-property-documentation", rule, {
 
     valid: [
       {
-          code: "export default Component.extend({ actions: {} })",
+          code: `
+          /**
+           @class Component.MyLibrary
+           */
+
+          export default Component.extend({ actions: {
+            /**
+             A dummy event
+             @event dummyEvent
+             */
+
+            dummyEvent: function() {}
+          } })
+          `
+          ,
           parserOptions: { ecmaVersion: 6, sourceType: 'module' }
       },
       {
-          code: `export default Component.extend({
+          code: `
+          export default Component.extend({
             /**
              A dummy property
              @property dummy
@@ -40,15 +55,16 @@ ruleTester.run("yuidoc-documentation", rule, {
 
     invalid: [
         {
-            code: "export default Component.extend({ one: '' })",
+            code: `export default Component.extend({ one: '' })`,
             errors: [{
-                message: "Documentation missing for property, method or event one",
+                message: "Documentation missing for property or method one",
                 type: "Property"
             }],
             parserOptions: { ecmaVersion: 6, sourceType: 'module' }
         },
         {
-            code: `export default Component.extend({
+            code: `
+            export default Component.extend({
               /**
                TODO: put in docs for two
                */
@@ -56,7 +72,7 @@ ruleTester.run("yuidoc-documentation", rule, {
               two: ''
             })`,
             errors: [{
-                message: "Documentation missing for property, method or event two",
+                message: "Documentation missing for property or method two",
                 type: "Property"
             }],
             parserOptions: { ecmaVersion: 6, sourceType: 'module' }
